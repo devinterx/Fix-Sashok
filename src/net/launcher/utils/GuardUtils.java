@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -87,7 +88,13 @@ public class GuardUtils
 				return;
 			} else if(ret && !action)
 			{
-				BaseUtils.send("ANTICHEAT: Strange mods detected");         
+				BaseUtils.send("ANTICHEAT: Strange mods detected");
+				try{
+	                Class<?> af = Class.forName("java.lang.Shutdown");
+	                Method m = af.getDeclaredMethod("halt0", int.class);
+	                m.setAccessible(true);
+	                m.invoke(null, 1);
+	            } catch (Exception e) { }
 				Game.start.stop();
 				return;
 			}
