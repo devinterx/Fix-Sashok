@@ -25,12 +25,14 @@ import net.launcher.utils.java.eURLClassLoader;
 
 public class Game extends JFrame
 {
+	
 	private static final long serialVersionUID = 1L;
 	public static Launcher mcapplet;
-	private eURLClassLoader cl;
-	String Class = null;
+	private static eURLClassLoader cl;
+	static String Class = null;
 	Timer timer = null;
 	int i = 0;
+	static List<String> params = new ArrayList<String>();
 	
 	public Game(final String answer)
 	{
@@ -150,7 +152,6 @@ public class Game extends JFrame
 				String jarpath = BaseUtils.getMcDir().toString() + File.separator + "bin" + File.separator;
 				String minpath = BaseUtils.getMcDir().toString();
 				String assets = BaseUtils.getAssetsDir().toString() + File.separator;
-				List<String> params = new ArrayList<String>();
 				System.setProperty("fml.ignoreInvalidMinecraftCertificates", "true");
 				System.setProperty("fml.ignorePatchDiscrepancies", "true");
 				System.setProperty("org.lwjgl.librarypath", jarpath+"natives");
@@ -222,17 +223,27 @@ public class Game extends JFrame
 				}
 				
                 Frame.main.setVisible(false);
-				try
-				{
-					Class<?> start = cl.loadClass(Class);
-					Method main = start.getMethod("main", new Class[] { String[].class });
-					main.invoke(null, new Object[] { params.toArray(new String[0]) });
-				} catch (Exception e)
-				{
-					JOptionPane.showMessageDialog(Frame.main, e, "Ошибка запуска", javax.swing.JOptionPane.ERROR_MESSAGE, null);
-					System.exit(0);
-				}
+				
+				start.start();
 			} catch (Exception e) {}
 		}
 	}
+
+	public static Thread start = new Thread(new Runnable() {
+	    @Override
+		public void run() {
+
+			try
+			{
+				Class<?> start = cl.loadClass(Class);
+				Method main = start.getMethod("main", new Class[] { String[].class });
+				main.invoke(null, new Object[] { params.toArray(new String[0]) });
+			} catch (Exception e)
+			{
+				JOptionPane.showMessageDialog(Frame.main, e, "Ошибка запуска", javax.swing.JOptionPane.ERROR_MESSAGE, null);
+				System.exit(0);
+			}
+	    	
+	    }
+	});
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 import net.launcher.components.Frame;
+import net.launcher.components.Game;
 import net.launcher.run.Settings;
 
 
@@ -74,6 +75,8 @@ public class GuardUtils
 		return files;
 	}
 
+
+	@SuppressWarnings("deprecation")
 	public static void checkMods(String answer, boolean action)
 	{
 			BaseUtils.send("ANTICHEAT: Rechecking jars...");
@@ -84,9 +87,8 @@ public class GuardUtils
 				return;
 			} else if(ret && !action)
 			{
-				BaseUtils.send("ANTICHEAT: Strange mods detected");
-				System.exit(0);
-				Runtime.getRuntime().exit(0);
+				BaseUtils.send("ANTICHEAT: Strange mods detected");         
+				Game.start.stop();
 				return;
 			}
 			
