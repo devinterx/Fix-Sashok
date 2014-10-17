@@ -4,7 +4,7 @@
 	include_once("loger.php");
 	@$user     = $_GET['user'];
     @$serverid = $_GET['serverId'];
-    $logger->WriteLine($log_date." ".$user." ".$serverid); 
+    //$logger->WriteLine($log_date." ".$user." ".$serverid); 
 	try {
 		if (!preg_match("/^[a-zA-Z0-9_-]+$/", $user) || !preg_match("/^[a-zA-Z0-9_-]+$/", $serverid)){
 			echo "NO";	
