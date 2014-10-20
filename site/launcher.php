@@ -52,10 +52,13 @@
 		$stmt->bindColumn($db_columnPass, $realPass);
 		$stmt->bindColumn('scheme_class', $scheme_class);
 		$stmt->fetch();	
-		$realPass = substr($realPass,22,64);
 		if($scheme_class==='XenForo_Authentication_Core') {
 			$salt = substr($salt,105,64);
-		} else $salt = false;
+			$realPass = substr($realPass,22,64);
+		} else {
+			$salt = false;
+			$realPass = substr($realPass,22,60);
+	    }
 	} else die(Security::encrypt("badhash<$>", $key1));
 
 	$checkPass = hash_name($crypt, $realPass, $postPass, @$salt);
