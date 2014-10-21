@@ -6,7 +6,7 @@
     @$sessionid  = str_replace('%3A', ':', $sess);
     @$user       = $_GET['user'];
     @$serverid   = $_GET['serverId'];
-    $logger->WriteLine($log_date." ".$user." ".$serverid); 
+    //$logger->WriteLine($log_date." ".$user." ".$serverid); 
 	
 	try {
 		if (sizeof($_GET)!=3 || empty ( $_GET['sessionId'] ) ||  empty ( $_GET['user'] ) || empty ( $_GET['serverId'] ) || !preg_match("/^[a-zA-Z0-9_-]+$/", $user) || !preg_match("/^[a-zA-Z0-9:_-]+$/", $sessionid) || !preg_match("/^[a-zA-Z0-9_-]+$/", $serverid)){
