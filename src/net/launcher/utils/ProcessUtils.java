@@ -9,25 +9,21 @@ public class ProcessUtils {
     
     private Process process = null;
     
-    public ProcessUtils(Process process)
-    {
+    public ProcessUtils(Process process) {
         this.process = process;
     }
     
     public void print() { print(""); }
     
-    public void print(final String prefix)
-    {
+    public void print(final String prefix) {
         Thread errorThread = new Thread() { public void run() { print(true); } };
         errorThread.start();
         
         print(false);
     }
     
-    private void print(boolean isErrorStream)
-    {
-        try
-        {
+    private void print(boolean isErrorStream) {
+        try {
             InputStream inputStream;
             if (isErrorStream) inputStream = process.getErrorStream();
             else inputStream = process.getInputStream();
@@ -36,45 +32,33 @@ public class ProcessUtils {
             BufferedReader buf = new BufferedReader(reader);
             String line = null;
             
-            while (isRunning())
-            {
-                try
-                {
-                    while ((line = buf.readLine()) != null)
-                    {
+            while (isRunning()) {
+                try {
+                    while ((line = buf.readLine()) != null) {
                         if (isErrorStream)
                             BaseUtils.sendErr(line);
                         else
                         	BaseUtils.send(line);
                     }
                 } catch (IOException ex)
-                {
-                    ex.printStackTrace();
-                } finally
-                {
+                {} finally {
                     try
                     {
                         buf.close();
                     } catch (IOException ex)
-                    {
-                        ex.printStackTrace();
-                    }
+                    {}
                 }
             }
-        } catch (UnsupportedEncodingException e)
-        {
+        } catch (UnsupportedEncodingException e) {
         	BaseUtils.sendErr("Не удалось установить кодировку при выводе сообщений об отладке");
             e.printStackTrace();
         }
     }
     
-    public boolean isRunning()
-    {
-        try
-        {
+    public boolean isRunning() {
+        try {
             process.exitValue();
-        } catch (IllegalThreadStateException ex)
-        {
+        } catch (IllegalThreadStateException ex) {
             return true;
         }
         
