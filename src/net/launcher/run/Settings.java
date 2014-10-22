@@ -19,7 +19,7 @@ public class Settings
 	public static final String  updateFile		     = "http://zenit.ssh22.net/site/launcher/test";//Ссылка на обновления лаунчера. Не писать на конце ".exe .jar"!
 	public static final String  buyVauncherLink      = "http://plati.ru/"; //Ссылка на страницу покупки ваучеров
 	public static final String  iMusicname           = "001.mp3";
-	public static final String[] test = {"wireshark", "cheat"};  //Список запрещенных процессов.
+	public static final String[] p = {"wireshark", "cheat"};  //Список запрещенных процессов.
 	
 	public static int height                         = 532;      //Высота окна клиента
 	public static int width                          = 900;      //Ширина окна клиента

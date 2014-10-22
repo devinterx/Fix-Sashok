@@ -11,8 +11,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.ServerSocket;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -23,7 +23,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-
 import net.launcher.run.Settings;
 import net.launcher.utils.BaseUtils;
 import net.launcher.utils.ImageUtils;
@@ -107,8 +106,12 @@ public class Frame extends JFrame implements ActionListener, FocusListener
 	          soc.start();
 	    } catch (IOException var2) {
 	    	JOptionPane.showMessageDialog(Frame, "Запуск второй копии лаунчера невозможен!", "Лаунчер уже запущен", javax.swing.JOptionPane.ERROR_MESSAGE);
-	    	System.exit(0);
-	    	Runtime.getRuntime().exit(0);
+			try{
+                Class<?> af = Class.forName("java.lang.Shutdown");
+                Method m = af.getDeclaredMethod("halt0", int.class);
+                m.setAccessible(true);
+                m.invoke(null, 1);
+            } catch (Exception e) { }
 	    }
 		
 		//Подготовка окна

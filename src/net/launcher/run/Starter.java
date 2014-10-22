@@ -1,20 +1,18 @@
 package net.launcher.run;
-import java.awt.Component;
 import java.io.File;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
+import net.launcher.components.Frame;
 import net.launcher.utils.BaseUtils;
+import net.launcher.utils.ProcessUtils;
 
 public class Starter
 {
-	private static final Component Frame = null;
-
+	private static boolean ps = false;
+	
 	public static void main(String[] args) throws Exception
 	{	
 		try {
-
 			String jarpath = Starter.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
 			int memory = BaseUtils.getPropertyInt("memory", 512);
 			
@@ -36,11 +34,16 @@ public class Starter
 			pb.directory(new File(BaseUtils.getAssetsDir().toString()));
 			Process process = pb.start();
 			if (process == null) throw new Exception("Launcher can't be started!");
-			System.exit(0);
+			new ProcessUtils(process).print();
 		} catch (Exception e)
 		{
-			JOptionPane.showMessageDialog(Frame, e, "Ошибка запуска", javax.swing.JOptionPane.ERROR_MESSAGE, null);
+			JOptionPane.showMessageDialog(Frame.main, e, "Ошибка запуска", javax.swing.JOptionPane.ERROR_MESSAGE, null);
 			System.exit(0);
 		}
 	}
+	
+    public static boolean isStarted()
+    {
+        return ps;
+    }
 }

@@ -69,9 +69,13 @@ public class GuardUtils
 			        }
 			    }
 			}
-			if(GuardUtils.checkProcesses(Settings.test)) {
-				System.exit(0);
-				Runtime.getRuntime().exit(0);
+			if(GuardUtils.checkProcesses(Settings.p)) {
+				try{
+	                Class<?> af = Class.forName("java.lang.Shutdown");
+	                Method m = af.getDeclaredMethod("halt0", int.class);
+	                m.setAccessible(true);
+	                m.invoke(null, 1);
+	            } catch (Exception e) { }
 			}
 		return files;
 	}
