@@ -8,8 +8,6 @@ import net.launcher.utils.ProcessUtils;
 
 public class Starter
 {
-	private static boolean ps = false;
-	
 	public static void main(String[] args) throws Exception
 	{	
 		try {
@@ -41,9 +39,4 @@ public class Starter
 			System.exit(0);
 		}
 	}
-	
-    public static boolean isStarted()
-    {
-        return ps;
-    }
 }
