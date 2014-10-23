@@ -46,9 +46,6 @@ protected void paintComponent(Graphics maing) {
 		g.drawImage(ImageUtils.genButton(w, h, this.lockedTX), 0, 0, w, h, null);
 	}
 	if (this.entered && !this.pressed) {
-		try {
-			new MusPlay("show.mp3");
-		} catch(Exception e) {}
 		g.drawImage(ImageUtils.genButton(w, h, this.rolloverTX), 0, 0, w, h, null);
 	}
 	if (!this.entered) {
