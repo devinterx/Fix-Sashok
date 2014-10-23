@@ -7,15 +7,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JComponent;
 
+import net.launcher.MusPlay;
 import net.launcher.run.Settings;
 import net.launcher.utils.BaseUtils;
 import static net.launcher.utils.ImageUtils.*;
 
 public class Combobox extends JComponent implements MouseListener, MouseMotionListener
 {
+	int i = 0;
 	private static final long serialVersionUID = 1L;
 	public final String[] 	elements;
 	public int initialy		= 0;
@@ -140,6 +141,13 @@ public class Combobox extends JComponent implements MouseListener, MouseMotionLi
 	
 	public int getSelectedIndex()
 	{
+		i++;
+		if(i > 1)
+		{
+			try {
+				new MusPlay("click.mp3");
+			} catch(Exception e) {}
+		}
 		return selected;
 	}
 	
