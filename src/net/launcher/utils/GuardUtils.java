@@ -84,7 +84,7 @@ public class GuardUtils
 	@SuppressWarnings("deprecation")
 	public static void checkMods(String answer, boolean action)
 	{
-			BaseUtils.send("ANTICHEAT: Rechecking jars...");
+			BaseUtils.sendp("ANTICHEAT: Rechecking jars...");
 			GuardUtils.updateMods(answer);
 			if(ret && action)
 			{
@@ -231,7 +231,6 @@ public class GuardUtils
 	            
 	            try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
 	            {
-	                BaseUtils.send("Вывод всех запущенных системой процессов:");
 	                
 	                while ((line = input.readLine()) != null)
 	                {
