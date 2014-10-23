@@ -16,7 +16,6 @@ import static net.launcher.utils.ImageUtils.*;
 
 public class Combobox extends JComponent implements MouseListener, MouseMotionListener
 {
-	int i = 0;
 	private static final long serialVersionUID = 1L;
 	public final String[] 	elements;
 	public int initialy		= 0;
@@ -113,6 +112,9 @@ public class Combobox extends JComponent implements MouseListener, MouseMotionLi
 			selected = y / pressedTX.getHeight();
 			entered = BaseUtils.contains(x, y, getX(), getY(), getWidth(), getHeight());
 		}
+		try {
+			new MusPlay("click.mp3");
+		} catch(Exception e1) {}
 		pressed = !pressed;
 		repaint();
 	}
@@ -141,13 +143,6 @@ public class Combobox extends JComponent implements MouseListener, MouseMotionLi
 	
 	public int getSelectedIndex()
 	{
-		i++;
-		if(i > 1)
-		{
-			try {
-				new MusPlay("click.mp3");
-			} catch(Exception e) {}
-		}
 		return selected;
 	}
 	
