@@ -13,12 +13,9 @@ public class ProcessUtils {
         this.process = process;
     }
     
-    public void print() { print(""); }
-    
-    public void print(final String prefix) {
+    public void print() {
         Thread errorThread = new Thread() { public void run() { print(true); } };
-        errorThread.start();
-        
+        errorThread.start();   
         print(false);
     }
     

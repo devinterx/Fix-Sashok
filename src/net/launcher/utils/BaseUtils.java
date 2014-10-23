@@ -72,7 +72,7 @@ public class BaseUtils
 
 	public static void sendErr(String err)
 	{
-		if(Settings.debug)System.err.println(err);
+		if(Settings.debug) System.err.println(err);
 	}
 
 	public static boolean contains(int x, int y, int xx, int yy, int w, int h)
