@@ -29,7 +29,7 @@ public class Game extends JFrame
 	private static final long serialVersionUID = 1L;
 	public static Launcher mcapplet;
 	private static eURLClassLoader cl;
-	static String Class = null;
+	static String Cl = null;
 	Timer timer = null;
 	int i = 0;
 	static List<String> params = new ArrayList<String>();
@@ -217,9 +217,9 @@ public class Game extends JFrame
 				} catch (ClassNotFoundException e) {}
 	            if(tweakClass)
 				{
-					Class = "net.minecraft.launchwrapper.Launch";
+					Cl = "net.minecraft.launchwrapper.Launch";
 				} else {
-					Class = "net.minecraft.client.main.Main";
+					Cl = "net.minecraft.client.main.Main";
 				}
 				
                 Frame.main.setVisible(false);
@@ -235,7 +235,7 @@ public class Game extends JFrame
 
 			try
 			{
-				Class<?> start = cl.loadClass(Class);
+				Class<?> start = cl.loadClass(Cl);
 				Method main = start.getMethod("main", new Class[] { String[].class });
 				main.invoke(null, new Object[] { params.toArray(new String[0]) });
 			} catch (Exception e)

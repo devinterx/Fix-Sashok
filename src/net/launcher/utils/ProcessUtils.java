@@ -33,9 +33,9 @@ public class ProcessUtils {
                 try {
                     while ((line = buf.readLine()) != null) {
                         if (isErrorStream)
-                            BaseUtils.sendErr(line);
+                            BaseUtils.sendErrp(line);
                         else
-                        	BaseUtils.send(line);
+                        	BaseUtils.sendp(line);
                     }
                 } catch (IOException ex)
                 {} finally {

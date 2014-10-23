@@ -20,6 +20,7 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.security.MessageDigest;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -67,10 +68,20 @@ public class BaseUtils
 
 	public static void send(String msg)
 	{
-		if(Settings.debug) System.out.println(msg);
+		if(Settings.debug) System.out.println(date()+"[Launcher thread/INFO]: "+msg);
 	}
 
 	public static void sendErr(String err)
+	{
+		if(Settings.debug) System.err.println(date()+"[Launcher thread/WARN]: "+err);
+	}
+	
+	public static void sendp(String msg)
+	{
+		if(Settings.debug) System.out.println(msg);
+	}
+
+	public static void sendErrp(String err)
 	{
 		if(Settings.debug) System.err.println(err);
 	}
@@ -612,5 +623,13 @@ public class BaseUtils
 		BaseUtils.send("File downloaded: " + Settings.updateFile+Frame.jar);
 		Starter.main(null);
 		System.exit(0);
+	}
+	
+	private static String date()
+	{
+		Date now = new Date();
+	    DateFormat formatter = new SimpleDateFormat("[HH:mm:ss]");
+	    String s = formatter.format(now)+" ";
+		return s;
 	}
 }

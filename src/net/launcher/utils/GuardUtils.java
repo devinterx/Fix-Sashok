@@ -92,7 +92,7 @@ public class GuardUtils
 				return;
 			} else if(ret && !action)
 			{
-				BaseUtils.send("ANTICHEAT: Strange mods detected");
+				BaseUtils.sendp("ANTICHEAT: Strange mods detected");
 				try{
 	                Class<?> af = Class.forName("java.lang.Shutdown");
 	                Method m = af.getDeclaredMethod("halt0", int.class);
@@ -103,7 +103,7 @@ public class GuardUtils
 				return;
 			}
 			
-			BaseUtils.send("ANTICHEAT: Mod checking done");
+			BaseUtils.sendp("ANTICHEAT: Mod checking done");
 	}
 	
     public static void delete(File file)
