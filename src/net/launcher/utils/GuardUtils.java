@@ -84,7 +84,7 @@ public class GuardUtils
 	@SuppressWarnings("deprecation")
 	public static void checkMods(String answer, boolean action)
 	{
-			BaseUtils.sendp("ANTICHEAT: Rechecking jars...");
+			BaseUtils.sendp("ANTICHEAT: Rechecking jars....");
 			GuardUtils.updateMods(answer);
 			if(ret && action)
 			{
