@@ -45,20 +45,22 @@ protected void paintComponent(Graphics maing) {
 	if (!isEnabled()) {
 		g.drawImage(ImageUtils.genButton(w, h, this.lockedTX), 0, 0, w, h, null);
 	}
-	if (this.entered) {
+	if (this.entered && !this.pressed) {
+		try {
+			new MusPlay("show.mp3");
+		} catch(Exception e) {}
 		g.drawImage(ImageUtils.genButton(w, h, this.rolloverTX), 0, 0, w, h, null);
 	}
 	if (!this.entered) {
 		g.drawImage(ImageUtils.genButton(w, h, this.defaultTX), 0, 0, w, h, null);
 	}
 	if ((this.pressed) && (this.entered)) {
-			this.entered = false;
-	try {
-		new MusPlay("click.mp3");
-	} catch(Exception e) {}
-      
-	g.drawImage(ImageUtils.genButton(w, h, this.pressedTX), 0, 0, w, h, null);
-	this.pressed = false;
+		this.entered = false;
+		try {
+			new MusPlay("click.mp3");
+		} catch(Exception e) {}
+		g.drawImage(ImageUtils.genButton(w, h, this.pressedTX), 0, 0, w, h, null);
+		this.pressed = false;
 	}
 
     if (Settings.drawTracers)
