@@ -22,12 +22,11 @@ import java.net.URLClassLoader;
 import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.imageio.ImageIO;
-
 import net.launcher.components.Files;
 import net.launcher.components.Frame;
 import net.launcher.run.Settings;
@@ -528,7 +527,14 @@ public class BaseUtils
 		send("Restarting launcher...");
 		try
 		{
-			Starter.main(null);
+			ArrayList<String> params = new ArrayList<String>();
+			params.add(System.getProperty("java.home")+"/bin/java");
+	        params.add("-classpath");
+	        params.add(Starter.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+	        params.add(Starter.class.getCanonicalName());
+			ProcessBuilder pb = new ProcessBuilder(params);
+			Process process = pb.start();
+			if (process == null) throw new Exception("Launcher can't be started!");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
