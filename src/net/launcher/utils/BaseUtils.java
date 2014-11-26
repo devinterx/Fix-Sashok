@@ -35,7 +35,6 @@ import net.launcher.run.Starter;
 public class BaseUtils
 {
 	public static final String empty = "";
-	public static final String http = "http://";
 	public static int logNumber = 0;
 	public static ConfigUtils config = new ConfigUtils("/launcher.config", getConfigName());
 
@@ -154,7 +153,7 @@ public class BaseUtils
 
 	public static String buildUrl(String s)
 	{
-		return http + Settings.domain + "/" + Settings.siteDir + "/" + s;
+		return Settings.http + Settings.domain + "/" + Settings.siteDir + "/" + s;
 	}
 
 	static
@@ -278,7 +277,7 @@ public class BaseUtils
 	
     public static String getURL(String path)
     {
-        return "http://" + Settings.domain + path;
+        return Settings.http + Settings.domain + path;
     }
 
 	public static String getClientName()
