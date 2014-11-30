@@ -37,7 +37,7 @@ public class GuardUtils
 				List<String> client = new ArrayList<String>();
 				String[] scn_dirs = answer.split("<::>")[1].split("<:b:>");
 				for (int i = 0; i < scn_dirs.length; i++) {
-						cl.addAll(getLibs(new File(dir+File.separator+scn_dirs[i])));
+						cl.addAll(Get.getLibs(new File(dir+File.separator+scn_dirs[i])));
 					  }
 				for(String rpl : cl)
 				{
@@ -119,23 +119,6 @@ public class GuardUtils
         {}
     }
     
-    private static List<String> getLibs(File libsfolder) {
-    	  List<String> libs = new ArrayList<String>();
-    	  if (!libsfolder.exists()) libsfolder.mkdirs();
-    	  for (File file : libsfolder.listFiles()) {
-    	   if (file.isDirectory()) {
-    	    libs.addAll(getLibs(file));
-    	   } else {
-    	    try {
-				libs.add(file.getAbsolutePath() + ":>" + hash(file.toURI().toURL()));
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
-    	   }
-    	  }
-    	  return libs;
-    }
-    
     public static void getLogs(File Logs) {
   	  if (!Logs.exists()) Logs.mkdirs();
   	  for (File file : Logs.listFiles()) {
@@ -146,7 +129,7 @@ public class GuardUtils
   		 }
   	   }
   	  }
-    }
+     }
     
 	   public static String hash(URL url) {
 		      if(url == null) {
