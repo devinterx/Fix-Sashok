@@ -58,6 +58,7 @@ public class GuardUtils
 				for (String check : client) {
 			        if (!sit.contains(check)) {
 			            File file = new File(check.split(":>")[0]);
+			            System.err.println("Delete -> "+file);
 			            delete(file);
 			            ret = true;
 			        }
