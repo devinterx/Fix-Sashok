@@ -626,8 +626,7 @@ public class BaseUtils
 		is.close();
 		fos.close();
 		BaseUtils.send("File downloaded: " + Settings.updateFile+Frame.jar);
-		Starter.main(null);
-		System.exit(0);
+		restart();
 	}
 	
 	private static String date()

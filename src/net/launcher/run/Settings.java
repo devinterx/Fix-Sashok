@@ -16,7 +16,7 @@ public class Settings
 	/** Параметры подключения */
 	public static final String  domain	 	         = "alexandrage.tk";//Домен сайта
 	public static final String  siteDir		         = "site";//Папка с файлами лаунчера на сайте
-	public static final String  updateFile		     = "http://zenit.ssh22.net/site/launcher/test";//Ссылка на обновления лаунчера. Не писать на конце ".exe .jar"!
+	public static final String  updateFile		     = "https://alexandrage.tk/site/launcher/fix";//Ссылка на обновления лаунчера. Не писать на конце ".exe .jar"!
 	public static final String  buyVauncherLink      = "http://plati.ru/"; //Ссылка на страницу покупки ваучеров
 	public static final String  iMusicname           = "001.mp3";
 	public static final String[] p = {"wireshark", "cheat"};  //Список запрещенных процессов.
