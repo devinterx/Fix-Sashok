@@ -20,7 +20,7 @@ public class Settings
 	public static final String  buyVauncherLink      = "http://plati.ru/"; //Ссылка на страницу покупки ваучеров
 	public static final String  iMusicname           = "001.mp3";
 	public static final String[] p = {"wireshark", "cheat"};  //Список запрещенных процессов.
-	public static final String http = "https://";   //Протокол подключения
+	public static final String http = "http://";   //Протокол подключения https:// если есть ssl сертификат
 	
 	public static int height                         = 532;      //Высота окна клиента
 	public static int width                          = 900;      //Ширина окна клиента
