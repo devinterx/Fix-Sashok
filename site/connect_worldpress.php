@@ -90,4 +90,3 @@
 	} catch(PDOException $pe) {
 		die("errorsql".$logger->WriteLine($log_date.$pe));  //вывод ошибок MySQL в m.log
 	}
-?>

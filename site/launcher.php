@@ -702,5 +702,3 @@
 
           return $password;
         }
-
-?>

@@ -10,4 +10,3 @@ voxelaria172, localhost, 25565, 1.7.2<::>
 voxelaria1710, localhost, 25565, 1.7.10<::>
 vanilla18, localhost, 25565, 1.8.0<::>
 ';
-?>

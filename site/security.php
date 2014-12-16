@@ -31,4 +31,3 @@ class Security {
 		return $decrypted;
 	}	
 }
-?>

@@ -83,4 +83,3 @@
 	} catch(PDOException $pe) {
 		die(Security::encrypt("errorsql", $key1).$logger->WriteLine($log_date.$pe));  //вывод ошибок MySQL в m.log
 	}
-?>
