@@ -22,9 +22,9 @@
 
 		if($user == $realUser)
 		{
-			$time = time();
-            $base64 = '{"timestamp":"'.$time.'","profileId":"'.$md5.'","profileName":"'.$realUser.'","isPublic":true,"textures":{"SKIN":{"url":"'.$skinurl .''.$realUser.'.png"}}}';
-            echo '{"id":"'.$md5.'","name":"'.$realUser.'","properties":[{"name":"textures","value":"'.base64_encode($base64).'","signature":""}]}';
+			$time = time()*1000;
+            $base64 = '{"timestamp":"'.$time.'","profileId":"'.$md5.'","profileName":"'.$realUser.'","isPublic":true,"textures":{"SKIN":{"url":"'.$skinurl.$realUser.'.png"}}}';
+            echo '{"id":"'.$md5.'","name":"'.$realUser.'","properties":[{"name":"textures","value":"'.base64_encode($base64).'","signature":"Cg=="}]}';
 		}
 		else exit(json_encode($bad));
 

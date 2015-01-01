@@ -208,11 +208,17 @@ public class Game extends JFrame
 					params.add("--tweakClass");
 					params.add("com.mumfrey.liteloader.launch.LiteLoaderTweaker");
 					tweakClass = true;
-				} catch (ClassNotFoundException e) {}	
+				} catch (ClassNotFoundException e) {}
 				try {
 					cl.loadClass("cpw.mods.fml.common.launcher.FMLTweaker");
 					params.add("--tweakClass");
 					params.add("cpw.mods.fml.common.launcher.FMLTweaker");
+					tweakClass = true;
+				} catch (ClassNotFoundException e) {}
+				try {
+					cl.loadClass("net.minecraftforge.fml.common.launcher.FMLTweaker");
+					params.add("--tweakClass");
+					params.add("net.minecraftforge.fml.common.launcher.FMLTweaker");
 					tweakClass = true;
 				} catch (ClassNotFoundException e) {}
 	            if(tweakClass)
