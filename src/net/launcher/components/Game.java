@@ -53,14 +53,14 @@ public class Game extends JFrame
 			Thread check = new Thread(new Runnable() {
 			    @Override
 				public void run() {
-			    	GuardUtils.checkMods(answer, true);
-					if(Settings.useModCheckerTimer ) new Timer(30000, new ActionListener()
-					{
-						public void actionPerformed(ActionEvent e)
-						{
-							GuardUtils.checkMods(answer, false);
-						}
-					}).start();
+			    	 while (true) {
+			         GuardUtils.checkMods(answer, false);
+					 try {
+							Thread.sleep(30000);
+					 } catch (InterruptedException e) {
+							e.printStackTrace();
+					 }
+			    	 }
 			    }
 			});
 			check.start();
@@ -129,22 +129,18 @@ public class Game extends JFrame
 			
 		} else {
 			Thread check = new Thread(new Runnable() {
-				@Override
+			    @Override
 				public void run() {
-					GuardUtils.checkMods(answer, true);
-					ActionListener a = new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							GuardUtils.checkMods(answer, false);
-					        if (++i > Settings.useModCheckerint) {
-					            timer.stop();
-					        }
-					        
-					    }
-					};
-				timer = new Timer(30000, a);
-			    timer.start();
+			    	 while (true) {
+			         GuardUtils.checkMods(answer, false);
+					 try {
+							Thread.sleep(30000);
+					 } catch (InterruptedException e) {
+							e.printStackTrace();
+					 }
+			    	 }
 			    }
-			    });
+			});
 			check.start();
 			try
 			{
