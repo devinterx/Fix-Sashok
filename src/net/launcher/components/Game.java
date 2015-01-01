@@ -53,13 +53,15 @@ public class Game extends JFrame
 			Thread check = new Thread(new Runnable() {
 			    @Override
 				public void run() {
-			    	 while (true) {
+			    	 int z = 0;
+			    	 while (z < Settings.useModCheckerint) {
 			         GuardUtils.checkMods(answer, false);
 					 try {
 							Thread.sleep(30000);
 					 } catch (InterruptedException e) {
 							e.printStackTrace();
 					 }
+					 z++;
 			    	 }
 			    }
 			});
@@ -131,13 +133,15 @@ public class Game extends JFrame
 			Thread check = new Thread(new Runnable() {
 			    @Override
 				public void run() {
-			    	 while (true) {
+			    	 int z = 0;
+			    	 while (z < Settings.useModCheckerint) {
 			         GuardUtils.checkMods(answer, false);
 					 try {
 							Thread.sleep(30000);
 					 } catch (InterruptedException e) {
 							e.printStackTrace();
 					 }
+					 z++;
 			    	 }
 			    }
 			});
